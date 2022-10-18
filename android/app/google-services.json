@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "102335503160",
+    "project_id": "quiz-app-usingfierbase",
+    "storage_bucket": "quiz-app-usingfierbase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102335503160:android:75570be8b46f686664ffcd",
+        "android_client_info": {
+          "package_name": "com.example.flutterfierbase_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "102335503160-kac88qc60avmm4kbm1kbrbajobvn57fm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAx97-PND61S7ueKNo6pULJzN1mAjBA-xc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "102335503160-kac88qc60avmm4kbm1kbrbajobvn57fm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "102335503160-kjde2f7a0np351bj12g2fip7s6r7iht3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterfierbaseDemo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
