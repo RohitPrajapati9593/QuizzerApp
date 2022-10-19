@@ -32,7 +32,7 @@ debugShowCheckedModeBanner: false,
           iconTheme: IconThemeData(color: Colors.teal),
           //brightness: Brightness.li,
         ),
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.orange,
         body: Column(
           children: [
             ContactUs(
@@ -53,9 +53,9 @@ debugShowCheckedModeBanner: false,
           ],
         ),
         bottomNavigationBar: ContactUsBottomAppBar(
-          textFont: "Noto",
-          fontSize: 18,
-          companyName: 'Rohit Prajapati & Harsh Patelwala',
+        //   textFont: "Noto",
+        //   fontSize: 18,
+          companyName: 'Harsh Patelwala & Rohit Prajapati',
           textColor: Colors.orange,
           backgroundColor: Colors.blueGrey,
           email: '',
