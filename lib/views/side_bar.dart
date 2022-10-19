@@ -39,7 +39,7 @@ class _SideBarState extends State<SideBar> {
           DrawerHeader(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("black_panther.jpg"), fit: BoxFit.cover),
+                  image: AssetImage("assets/black_panther.jpg"), fit: BoxFit.cover),
             ),
             child: Container(
               child: Column(

@@ -5,6 +5,15 @@ import 'package:flutterfierbase_demo/helper/constants.dart';
 import 'package:flutterfierbase_demo/services/database.dart';
 import 'package:flutterfierbase_demo/widget/widget.dart';
 import 'package:flutterfierbase_demo/views/side_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+// import 'package:quizmaker/helper/constants.dart';
+// import 'package:quizmaker/models/account.dart';
+// // import 'package:quizmaker/services/auth.dart';
+// import 'package:quizmaker/services/database.dart';
+// import 'package:quizmaker/views/side_bar.dart';
+// import 'package:quizmaker/widget/widget.dart';
+
 class AccountDetails extends StatefulWidget {
   const AccountDetails({Key? key}) : super(key: key);
 
@@ -68,175 +77,175 @@ class _AccountDetailsState extends State<AccountDetails> {
       ),
       body: _loading
           ? Container(
-              child: Center(child: CircularProgressIndicator()),
-            )
+        child: Center(child: CircularProgressIndicator()),
+      )
           : ListView(
-              children: [
-                Form(
-                  key: _formKey,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 24),
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          validator: (val) =>
-                              name.isEmpty ? "Enter an Name" : null,
-                          decoration: InputDecoration(
-                              hintText: userDetails[0],
-                              hintStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.brown,
-                              )),
-                          initialValue: userDetails[0],
-                          onChanged: (val) {
-                            name = val;
-                          },
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        TextFormField(
-                          initialValue: userDetails[1],
-                          decoration: InputDecoration(
-                              hintText: userDetails[1],
-                              hintStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.brown,
-                              )),
-                          readOnly: true,
-                        ),
-                        TextFormField(
-                          // initialValue: userDetails[2],
-                          controller: datecontroller,
-                          style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.brown,
-                              ),
-                          decoration: InputDecoration(
-                              hintText: dob == "" ? "Date of Birth" : dob,),
-                          readOnly: true,
-                          validator: (value) {
-                            if (dob == "") return "Enter Date of Birth";
-                            return null;
-                          },
-                          onTap: () async {
-                            DateTime? pickDob = await showDatePicker(
-                                context: context,
-                                initialDate: DateTime.now(),
-                                firstDate: DateTime(1900),
-                                lastDate: DateTime.now());
+        children: [
+          Form(
+            key: _formKey,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                children: [
+                  TextFormField(
+                    validator: (val) =>
+                    name.isEmpty ? "Enter an Name" : null,
+                    decoration: InputDecoration(
+                        hintText: userDetails[0],
+                        hintStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.brown,
+                        )),
+                    initialValue: userDetails[0],
+                    onChanged: (val) {
+                      name = val;
+                    },
+                  ),
+                  SizedBox(
+                    height: 6,
+                  ),
+                  TextFormField(
+                    initialValue: userDetails[1],
+                    decoration: InputDecoration(
+                        hintText: userDetails[1],
+                        hintStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.brown,
+                        )),
+                    readOnly: true,
+                  ),
+                  TextFormField(
+                    // initialValue: userDetails[2],
+                    controller: datecontroller,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.brown,
+                    ),
+                    decoration: InputDecoration(
+                      hintText: dob == "" ? "Date of Birth" : dob,),
+                    readOnly: true,
+                    validator: (value) {
+                      if (dob == "") return "Enter Date of Birth";
+                      return null;
+                    },
+                    onTap: () async {
+                      DateTime? pickDob = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1900),
+                          lastDate: DateTime.now());
 
-                            if (pickDob != null) {
-                              dob = DateFormat('dd-MM-yyyy').format(pickDob);
-                              datecontroller.text = dob;
-                            }
-                          },
+                      if (pickDob != null) {
+                        dob = DateFormat('dd-MM-yyyy').format(pickDob);
+                        datecontroller.text = dob;
+                      }
+                    },
+                  ),
+                  TextFormField(
+                    initialValue: userDetails[3],
+                    decoration: InputDecoration(
+                        hintText: userDetails[3],
+                        hintStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.brown,
+                        )),
+                    readOnly: true,
+                  ),
+                  TextFormField(
+                    initialValue: userDetails[4],
+                    decoration: InputDecoration(
+                        hintText: userDetails[4],
+                        hintStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.brown,
+                        )),
+                    readOnly: true,
+                  ),
+                  TextFormField(
+                    initialValue: userDetails[5],
+                    decoration: InputDecoration(
+                        hintText: userDetails[5],
+                        hintStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.brown,
+                        )),
+                    readOnly: true,
+                  ),
+                  if (userDetails[3] == "Student")
+                    DropdownButtonFormField(
+                        value: userDetails[6],
+                        decoration: InputDecoration(
+                            hintText: userDetails[6],
+                            hintStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.brown,
+                            )),
+                        validator: (val) {
+                          return val == null ? "Selec a Semester" : null;
+                        },
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.brown,
                         ),
-                        TextFormField(
-                          initialValue: userDetails[3],
-                          decoration: InputDecoration(
-                              hintText: userDetails[3],
-                              hintStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.brown,
-                              )),
-                          readOnly: true,
-                        ),
-                        TextFormField(
-                          initialValue: userDetails[4],
-                          decoration: InputDecoration(
-                              hintText: userDetails[4],
-                              hintStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.brown,
-                              )),
-                          readOnly: true,
-                        ),
-                        TextFormField(
-                          initialValue: userDetails[5],
-                          decoration: InputDecoration(
-                              hintText: userDetails[5],
-                              hintStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.greenAccent,
-                              )),
-                          readOnly: true,
-                        ),
-                        if (userDetails[3] == "Student")
-                          DropdownButtonFormField(
-                            value: userDetails[6],
-                              decoration: InputDecoration(
-                                  hintText: userDetails[6],
-                                  hintStyle: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.greenAccent,
-                                  )),
-                              validator: (val) {
-                                return val == null ? "Selec a Semester" : null;
-                              },
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.greenAccent,
-                                ),
-                              items: <String>[
-                                "1",
-                                "2",
-                                "3",
-                                "4",
-                                "5",
-                                "6",
-                                "7",
-                                "8"
-                              ].map<DropdownMenuItem<String>>((String e) {
-                                return DropdownMenuItem(
-                                    value: e, child: Text(e));
-                              }).toList(),
-                              onChanged: (val) {
-                                semester = val as String;
-                              }),
-                        if (userDetails[3] == "Student")
-                          TextFormField(
-                            initialValue: userDetails[7],
-                            style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.brown,
-                                ),
-                            decoration: InputDecoration(
-                                hintText: userDetails[7],),
-                            validator: (value) =>
-                                value == "" ? "Enter valid Roll number" : null,
-                            onChanged: (value) {
-                              rollNo = value;
-                            },
-                          ),
-                          SizedBox(
-                            height: 24,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              updateDetails();
-                            },
-                            child: Container(
-                              alignment: Alignment.center,
-                              width: MediaQuery.of(context).size.width,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 24, vertical: 20),
-                              decoration: BoxDecoration(
-                                  color: Colors.orange,
-                                  borderRadius: BorderRadius.circular(30)),
-                              child: Text(
-                                "Update Account Details",
-                                style: TextStyle(
-                                    fontSize: 16, color: Colors.blueGrey),
-                              ),
-                            ),
-                          ),
-                      ],
+                        items: <String>[
+                          "1",
+                          "2",
+                          "3",
+                          "4",
+                          "5",
+                          "6",
+                          "7",
+                          "8"
+                        ].map<DropdownMenuItem<String>>((String e) {
+                          return DropdownMenuItem(
+                              value: e, child: Text(e));
+                        }).toList(),
+                        onChanged: (val) {
+                          semester = val as String;
+                        }),
+                  if (userDetails[3] == "Student")
+                    TextFormField(
+                      initialValue: userDetails[7],
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.brown,
+                      ),
+                      decoration: InputDecoration(
+                        hintText: userDetails[7],),
+                      validator: (value) =>
+                      value == "" ? "Enter valid Roll number" : null,
+                      onChanged: (value) {
+                        rollNo = value;
+                      },
+                    ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      updateDetails();
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: MediaQuery.of(context).size.width,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 24, vertical: 20),
+                      decoration: BoxDecoration(
+                          color: Colors.teal,
+                          borderRadius: BorderRadius.circular(30)),
+                      child: Text(
+                        "Update Account Details",
+                        style: TextStyle(
+                            fontSize: 16, color: Colors.amber),
+                      ),
                     ),
                   ),
-                )
-              ],
+                ],
+              ),
             ),
+          )
+        ],
+      ),
     );
   }
 }
